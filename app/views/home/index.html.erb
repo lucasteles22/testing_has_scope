@@ -1,0 +1,25 @@
+<h1>Testing has_scope</h1>
+<p>
+  <h3> <%= link_to 'Clear', root_path %></h3>
+</p>
+<hr>
+<p>
+  <%= link_to 'Active', root_path(:active => true) %>
+</p>
+<p>
+  <%= link_to 'Inactive', root_path(:inactive => true) %>
+</p>
+<p>
+  <%= link_to 'By degree - Graduation', root_path(:by_degree => 'Graduation') %>
+</p>
+<p>
+  <%= link_to 'By period - 2016-01-01 to 2016-12-31', root_path(:by_period => { :started_at => '20160101', :ended_at => '20161231'} ) %>
+</p>
+<hr>
+<div>
+  <% @graduations.each do |item| %>
+  <ul>
+    <li><%= item.name %></li>
+  </ul>
+  <% end %>
+</div>
