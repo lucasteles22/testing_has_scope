@@ -1,0 +1,23 @@
+<h1>Filter ajax by status</h1>
+<p>
+<%= link_to 'Go back', root_path %>
+</p>
+<%= form_tag ajax_path, method: :get, id: 'graduations_search' do %>
+  <%= radio_button_tag 'by_status[]', 'all', :checked => true %> All
+  <%= radio_button_tag 'by_status[]', 'active' %> Active
+  <%= radio_button_tag 'by_status[]', 'inactive' %> Inactive
+<% end %>
+
+<div id="graduations">
+  <%= render 'graduations' %>
+</div>
+
+<script type="text/javascript">
+  $(function(){
+    $('input[type=radio]').change(function(){
+      $.get($('#graduations_search').attr('action'),
+      $('#graduations_search').serialize(), null, 'script');
+      return false
+    })
+  })
+</script>
